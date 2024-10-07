@@ -1,0 +1,23 @@
+
+<li class="{{ Request::is('rt-admin/$MODEL_NAME_PLURAL_CAMEL$**') ? 'mm-active' : '' }}">
+        <a href="#">
+            <i class="metismenu-icon pe-7s-menu"></i>
+            $MODEL_NAME_PLURAL_HUMAN$
+            <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+        </a>
+        <ul class="{{ Request::is('rt-admin/$MODEL_NAME_PLURAL_CAMEL$*') ? 'mm-show' : '' }}">
+            <li>
+                <a class="{{ Request::is('rt-admin/$MODEL_NAME_PLURAL_CAMEL$/create') ? 'mm-active' : '' }}"
+                    href="{{route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.create')}}">
+                    <i class="metismenu-icon"></i>
+                    Create
+                </a>
+            <li>
+                <a class="{{ Request::is('rt-admin/$MODEL_NAME_PLURAL_CAMEL$') ? 'mm-active' : '' }}"
+                    href="{{route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index')}}">
+                    <i class="metismenu-icon">
+                    </i>Manage
+                </a>
+            </li>
+        </ul>
+</li>

@@ -1,0 +1,17 @@
+@extends('layouts.admin')
+@section('title')View  $MODEL_NAME_HUMAN$ Details @endsection
+@section('content')
+<div class="row">
+    <div class="col-md-12">
+        <div class="main-card mb-3 card">
+            <div class="card-header">
+                <h5 class="card-title text-primary"> View  $MODEL_NAME_HUMAN$ Details</h5><br>
+            </div>
+            <div class="card-body">
+                    @include('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.show_fields')
+                    <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index') }}" class="btn-transition btn btn-outline-info">Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

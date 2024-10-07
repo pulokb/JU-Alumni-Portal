@@ -1,0 +1,101 @@
+<?php
+
+namespace $NAMESPACE_CONTROLLER$;
+
+use $NAMESPACE_DATATABLES$\$MODEL_NAME$DataTable;
+use $NAMESPACE_REQUEST$;
+use App\Helpers\FileHelper;
+use $NAMESPACE_REQUEST$\$MODEL_NAME$CreateRequest;
+use $NAMESPACE_REQUEST$\$MODEL_NAME$UpdateRequest;
+use $NAMESPACE_MODEL$\$MODEL_NAME$;
+use $NAMESPACE_APP$\Http\Controllers\AppBaseController;
+use Session;
+
+class $MODEL_NAME$Controller extends AppBaseController
+{
+
+    public function index($MODEL_NAME$DataTable $$MODEL_NAME_CAMEL$DataTable)
+    {
+        if (request()->ajax()) {
+            return $$MODEL_NAME_CAMEL$DataTable->dataTableValue();
+        }
+        $dataTable = $$MODEL_NAME_CAMEL$DataTable->html();
+        return  view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.index',compact('dataTable'));
+    }
+
+
+    public function create()
+    {
+        return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.create');
+    }
+
+
+    public function store($MODEL_NAME$CreateRequest $request)
+    {
+        $input = $request->all();
+
+        $MODEL_NAME$::create($input);  
+        //$imageName = FileHelper::uploadImage($request);      
+        //$MODEL_NAME$::create(array_merge($request->all(), ['image' => $imageName]));
+        
+        return back()->with('success','$MODEL_NAME_HUMAN$ saved successfully.');
+    }
+
+
+    public function show($id)
+    {
+        $$MODEL_NAME_CAMEL$ = $MODEL_NAME$::find($id);
+
+        if (empty($$MODEL_NAME_CAMEL$)) {
+            Session::flash('error','$MODEL_NAME_HUMAN$ not found');
+
+            return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
+        }
+
+        return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.show')->with('$MODEL_NAME_CAMEL$', $$MODEL_NAME_CAMEL$);
+    }
+
+
+    public function edit($id)
+    {
+        $$MODEL_NAME_CAMEL$ = $MODEL_NAME$::find($id);
+
+        if (empty($$MODEL_NAME_CAMEL$)) {
+            Session::flash('error','$MODEL_NAME_HUMAN$ not found');
+
+            return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
+        }
+
+        return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.edit')->with('$MODEL_NAME_CAMEL$', $$MODEL_NAME_CAMEL$);
+    }
+
+
+    public function update($id, $MODEL_NAME$UpdateRequest $request)
+    {
+        $$MODEL_NAME_CAMEL$ = $MODEL_NAME$::find($id);
+
+        if (empty($$MODEL_NAME_CAMEL$)) {
+           Session::flash('error','$MODEL_NAME_HUMAN$ not found');
+
+            return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
+        }
+
+        // $imageName = FileHelper::uploadImage($request, $$MODEL_NAME_CAMEL$);
+        // $$MODEL_NAME_CAMEL$->fill(array_merge($request->all(), ['image' => $imageName]));
+
+        $$MODEL_NAME_CAMEL$->fill($request->all());
+        $$MODEL_NAME_CAMEL$->save();
+
+        Session::flash('success','$MODEL_NAME_HUMAN$ updated successfully.');
+
+        return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
+    }
+
+
+    public function destroy($id)
+    {
+        $$MODEL_NAME_CAMEL$ = $MODEL_NAME$::findOrFail($id);
+        //FileHelper::deleteImage($$MODEL_NAME_CAMEL$);
+        $$MODEL_NAME_CAMEL$->delete();
+    }
+}

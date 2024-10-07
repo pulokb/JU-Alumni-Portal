@@ -1,0 +1,10 @@
+<div class='btn-group'>
+    <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.show', $$PRIMARY_KEY_NAME$) }}" class='border-0 btn-sm btn-transition btn btn-outline-primary'>
+        View
+    </a>
+    <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.edit', $$PRIMARY_KEY_NAME$) }}" class='border-0 btn-sm btn-transition btn btn-outline-info'>
+       Edit
+    </a>
+     <a href="javascript:void(0)" data-toggle="tooltip" data-id="{{$$PRIMARY_KEY_NAME$}}" data-original-title="Delete"
+        class="border-0 btn-sm btn-transition btn btn-outline-danger delete">Delete</a>
+</div>

@@ -1,0 +1,7 @@
+$FIELDS$
+
+<!-- Submit Field -->
+<div class="form-group">
+    {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+    <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index') }}" class="border-0 btn-transition btn btn-outline-info">Cancel</a>
+</div>

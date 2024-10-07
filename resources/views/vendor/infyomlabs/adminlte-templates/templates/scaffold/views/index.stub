@@ -1,0 +1,19 @@
+@extends('layouts.admin')
+@section('title')$MODEL_NAME_PLURAL_HUMAN$ @endsection
+@section('content')
+<div class="row">
+    <div class="col-md-12">
+        <div class="main-card mb-3 card">
+            <div class="card-header">
+                <h5 class="card-title text-primary">Manage $MODEL_NAME_PLURAL_HUMAN$ </h5><br>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    @include('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.table')
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
